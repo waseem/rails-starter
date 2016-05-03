@@ -1,0 +1,18 @@
+default: &DEFAULT
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+
+development:
+  <<: *DEFAULT
+  database: tribe_fitter_development
+
+test:
+  <<: *DEFAULT
+  database: tribe_fitter_test
+
+production:
+  <<: *DEFAULT
+  database: tribe_fitter_production
