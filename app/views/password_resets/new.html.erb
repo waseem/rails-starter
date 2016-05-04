@@ -1,0 +1,9 @@
+<%= form_tag password_resets_path do |f| %>
+  <br />
+
+  <p>
+    <%= text_field_tag(:email, nil, placeholder: 'email') %>
+  </p>
+
+  <%= submit_tag("Send Password Reset Email") %>
+<% end %>

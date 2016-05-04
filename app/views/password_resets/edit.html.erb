@@ -1,0 +1,30 @@
+<h1>Enter New Password</h1>
+<%= form_for(@user, url: "/password_resets/#{@user.password_reset_token}") do |f| %>
+  <br />
+
+  <% if @user.errors.any? %>
+    <div class="errors">
+      <h2>There were problems with your password.</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+  <p>
+    <%= f.password_field :password, placeholder: 'password' %>
+  </p>
+
+  <p>
+    <%= f.password_field :password_confirmation, placeholder: 'confirm password' %>
+  </p>
+  
+  <%= f.submit 'Change' %>
+<% end %>
+<br />
+<br />
+
+<%= link_to 'Sign In', sign_in_path %>
