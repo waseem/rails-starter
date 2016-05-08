@@ -47,4 +47,18 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  # WA: FIXME: Remove following once Rspec 3.5.0 and Rails 5 are released
+  # https://github.com/rails/rails-controller-testing#rspec
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration, type: type
+  end
+
+  def test_sign_in(user)
+    allow_any_instance_of(controller.class).to receive(:authenticate).and_return(true)
+    allow_any_instance_of(controller.class).to receive(:current_user).and_return(user)
+  end
 end
+

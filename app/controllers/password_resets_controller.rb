@@ -43,6 +43,7 @@ class PasswordResetsController < ApplicationController
       end
 
     else
+      flash[:notice] = "There was some error updating your password. Please try again later."
       respond_to do |format|
         format.html { render :edit }
       end

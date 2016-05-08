@@ -16,6 +16,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
+  gem 'rails-controller-testing'
 end
 
 group :development do

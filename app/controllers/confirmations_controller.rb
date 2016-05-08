@@ -1,6 +1,6 @@
 class ConfirmationsController < ApplicationController
   layout 'user_sessions'
-  skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def new
     user = User.find_by_confirmation_token(params[:confirmation_token])
@@ -15,7 +15,7 @@ class ConfirmationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to root_url }
     end
   end
 end
